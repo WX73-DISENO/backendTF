@@ -9,7 +9,6 @@ public record EmailAddress(
         @Column(name = "email")
         @Email
         String address){
-
     public EmailAddress(){
         this(null);
 

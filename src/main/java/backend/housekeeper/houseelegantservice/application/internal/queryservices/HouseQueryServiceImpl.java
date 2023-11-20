@@ -2,7 +2,7 @@ package backend.housekeeper.houseelegantservice.application.internal.queryservic
 
 import backend.housekeeper.houseelegantservice.application.internal.commandservices.HouseNotFoundException;
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.House;
-import backend.housekeeper.houseelegantservice.domain.model.queries.GetHouseByIdQuery;
+import backend.housekeeper.houseelegantservice.domain.model.queries.GetHouseAllQuery;
 import backend.housekeeper.houseelegantservice.domain.model.queries.HouseCriteria;
 import backend.housekeeper.houseelegantservice.domain.service.HouseQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.HouseRepository;
@@ -18,10 +18,12 @@ public class HouseQueryServiceImpl implements HouseQueryService {
     }
 
     @Override
-    public Optional<House> handle(GetHouseByIdQuery query) {
+    public Optional<House> handle(GetHouseAllQuery query) {
         return Optional.empty();
     }
 
+
+    /*
     @Override
     public House getHouseById(Long houseId) {
         // Retorna la casa si existe, de lo contrario, lanza una excepción
@@ -50,5 +52,5 @@ public class HouseQueryServiceImpl implements HouseQueryService {
             // Sin criterios, obtener todas las casas
             return houseRepository.findAll();
         }
-    }
+    }*/
 }

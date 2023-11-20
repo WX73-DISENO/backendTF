@@ -1,12 +1,5 @@
 package backend.housekeeper.houseelegantservice.domain.model.command;
 
-public record CreateKeeperCommand(
-        String name,
-        String country,
-        String city,
-        String streetAddress,
-        String description,
-        String photoUrl,
-        double rating
-) {
+public record CreateKeeperCommand(String firstName, String lastName, String description, String street,
+                                  String city,String country) {
 }

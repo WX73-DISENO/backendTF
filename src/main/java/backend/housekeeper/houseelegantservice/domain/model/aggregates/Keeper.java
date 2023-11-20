@@ -1,4 +1,5 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
+import backend.housekeeper.houseelegantservice.domain.model.valueobjects.EmailAddress;
 import backend.housekeeper.houseelegantservice.domain.model.valueobjects.KeeperName;
 import backend.housekeeper.houseelegantservice.domain.model.valueobjects.KeeperRecordId;
 import backend.housekeeper.houseelegantservice.domain.model.valueobjects.StreetAddress;
@@ -36,6 +37,20 @@ public class Keeper {
     @Column(name = "description")
     private String description;
 
+
+
+    @Column(name = "birthdate")
+    private Date birthdate;
+
+
+    @Column(name = "number")
+    private int number;
+
+
+    @Embedded
+    @Getter
+    private EmailAddress email;
+
     @Column(name = "photo_url")
     private String photoUrl;
 
@@ -49,9 +64,12 @@ public class Keeper {
     private Date updatedAt;
 
 
-    public Keeper(String firstName, String lastName, String description, String street, String city, String country) {
+    public Keeper(String firstName, String lastName, String description,Date birthdate,int number,String email, String street, String city, String country) {
         this.name = new KeeperName(firstName, lastName);
         this.description = description;
+        this.birthdate=birthdate;
+        this.number=number;
+        this.email=new EmailAddress(email);
         this.address = new StreetAddress(street, city, country);
     }
 

@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface KeeperQueryService {
 
-        Optional<Keeper> handle(GetKeeperAllQuery command);
+        Optional<Keeper> handle(GetKeeperAllQuery query);
 }

@@ -14,6 +14,7 @@ public class Mensajeria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     private String nombre;
 
     @Column(name = "description") // Puedes personalizar el nombre de la columna si es necesario
@@ -27,4 +28,13 @@ public class Mensajeria {
 
     @LastModifiedDate
     private Date updatedAt;
+
+    public Mensajeria(Long id, String nombre, String description, String photoFace, Date createdAt, Date updatedAt) {
+        this.id = id;
+        this.nombre = nombre;
+        this.description = description;
+        this.photoFace = photoFace;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

@@ -52,6 +52,18 @@ public class House {
 
     }
 
+    public House(Long id, String street, String city, String country, double price, double rating, String photoUrl, int capacity, HouseStatus status, Date createdAt, Date updatedAt) {
+        this.id = id;
+        this.address = new StreetAddress(street, city, country);
+        this.price = price;
+        this.rating = rating;
+        this.photoUrl = photoUrl;
+        this.capacity = capacity;
+        this.status = HouseStatus.FREE;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public String getStreetAddress() {
         return this.address.getStreetAddress();
     }

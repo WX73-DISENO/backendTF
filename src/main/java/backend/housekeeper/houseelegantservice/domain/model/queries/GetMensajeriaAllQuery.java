@@ -1,4 +1,4 @@
 package backend.housekeeper.houseelegantservice.domain.model.queries;
 
-public record GetHouseByIdQuery(Long houseId) {
+public record GetMensajeriaAllQuery() {
 }

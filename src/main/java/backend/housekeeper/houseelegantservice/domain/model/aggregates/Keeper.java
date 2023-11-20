@@ -10,17 +10,13 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
 
+
+@Embeddable
 public class Keeper {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
-    @Embedded
-    @Column(name = "keeper_record_id")
-    private KeeperRecordId  keeperRecordId;
-
 
     @Embedded
     @Column(name = "name")

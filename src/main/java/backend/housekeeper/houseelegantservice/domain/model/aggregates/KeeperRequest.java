@@ -1,4 +1,5 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
+import backend.housekeeper.houseelegantservice.domain.model.valueobjects.KeeperName;
 import backend.housekeeper.shared.domain.model.entities.AuditableModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class KeeperRequest extends AuditableModel {
     private Long id;
 
     @Getter
-    private String name;
+    private KeeperName name;
     @Getter
     private String message;
     @Getter
@@ -35,8 +36,10 @@ public class KeeperRequest extends AuditableModel {
     private Date updatedAt;
 
 
-    public KeeperRequest(String name, String message, String photoUrl){
-        this.name =  name;
+
+
+    public KeeperRequest(String firstName,String lastName, String message, String photoUrl){
+        this.name =  new KeeperName(firstName,lastName);
         this.message = message;
         this.photoUrl = photoUrl;
     }

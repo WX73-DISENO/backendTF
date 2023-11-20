@@ -5,10 +5,11 @@ import backend.housekeeper.houseelegantservice.domain.model.aggregates.KeeperReq
 import backend.housekeeper.houseelegantservice.domain.model.queries.GetKeeperAllQuery;
 import backend.housekeeper.houseelegantservice.domain.model.queries.GetKeeperRequestAllQuery;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface KeeperRequestQueryService {
 
 
-    Optional<KeeperRequest> handle(GetKeeperRequestAllQuery query);
+    List<KeeperRequest> handle(GetKeeperRequestAllQuery query);
 }

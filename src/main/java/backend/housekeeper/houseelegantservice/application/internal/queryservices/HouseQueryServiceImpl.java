@@ -6,10 +6,12 @@ import backend.housekeeper.houseelegantservice.domain.model.queries.GetHouseAllQ
 import backend.housekeeper.houseelegantservice.domain.model.queries.HouseCriteria;
 import backend.housekeeper.houseelegantservice.domain.service.HouseQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.HouseRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class HouseQueryServiceImpl implements HouseQueryService {
     private final HouseRepository houseRepository;
 
@@ -18,8 +20,8 @@ public class HouseQueryServiceImpl implements HouseQueryService {
     }
 
     @Override
-    public Optional<House> handle(GetHouseAllQuery query) {
-        return Optional.empty();
+    public List<House> handle(GetHouseAllQuery query) {
+        return houseRepository.findAll();
     }
 
 

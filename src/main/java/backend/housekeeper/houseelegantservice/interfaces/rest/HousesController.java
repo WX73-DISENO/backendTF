@@ -14,9 +14,10 @@ import java.util.List;
 public class HousesController {
     //@Autowired
 
-
-    //@GetMapping
-
+    /*
+    @GetMapping("/api/v1/houses")
+    public
+    */
 
     //@PostMapping
 

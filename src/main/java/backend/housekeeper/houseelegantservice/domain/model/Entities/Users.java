@@ -39,8 +39,7 @@ public class Users {
     private String typeUser;
 
 
-    public Users(Long id, String email, String password, String firstName,String lastName, Date birthdate, int number, String passwordRepeat, String typeUser) {
-        this.id = id;
+    public Users(String email, String password, String firstName,String lastName, Date birthdate, int number, String passwordRepeat, String typeUser) {
         this.emailAddress = new EmailAddress(email);
         this.password = new Password(password);
         this.personName =new PersonName(firstName,lastName);

@@ -1,8 +1,8 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import backend.housekeeper.houseelegantservice.domain.model.valueobjects.KeeperName;
+import backend.housekeeper.houseelegantservice.domain.model.valueobjects.KeeperRecordId;
+import backend.housekeeper.houseelegantservice.domain.model.valueobjects.StreetAddress;
+import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -15,17 +15,23 @@ public class Keeper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    @Embedded
+    @Column(name = "keeper_record_id")
+    private KeeperRecordId  keeperRecordId;
+
+
+    @Embedded
     @Column(name = "name")
-    private String name;
+    private KeeperName name;
 
-    @Column(name = "country")
-    private String country;
-
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "street_address")
-    private String streetAddress;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "address_street")),
+            @AttributeOverride(name = "city", column = @Column(name = "address_city")),
+            @AttributeOverride(name = "country", column = @Column(name = "address_country"))
+    })
+    private StreetAddress address;
 
     @Column(name = "description")
     private String description;
@@ -41,4 +47,27 @@ public class Keeper {
 
     @LastModifiedDate
     private Date updatedAt;
+
+
+    public Keeper(String firstName, String lastName, String description, String street, String city, String country) {
+        this.name = new KeeperName(firstName, lastName);
+        this.description = description;
+        this.address = new StreetAddress(street, city, country);
+    }
+
+    public Keeper(){
+
+    }
+
+
+    public String getFullName() {
+        return this.name.getFullName();
+    }
+
+    public String getStreetAddress() {
+        return this.address.getStreetAddress();
+    }
+
+
+
 }

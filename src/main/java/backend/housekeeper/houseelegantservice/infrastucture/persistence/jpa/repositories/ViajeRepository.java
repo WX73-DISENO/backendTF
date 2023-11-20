@@ -14,3 +14,4 @@ public interface ViajeRepository extends JpaRepository<Viaje, Long> {
     List<Viaje> findAll();
     void delete(Viaje viaje);
 }
+

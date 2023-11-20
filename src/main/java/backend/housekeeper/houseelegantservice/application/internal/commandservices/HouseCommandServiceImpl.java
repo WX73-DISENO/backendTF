@@ -6,7 +6,9 @@ import backend.housekeeper.houseelegantservice.domain.model.command.UpdateHouseC
 import backend.housekeeper.houseelegantservice.domain.service.HouseCommandService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.HouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class HouseCommandServiceImpl implements HouseCommandService {
     private final HouseRepository houseRepository;
 

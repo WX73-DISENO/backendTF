@@ -7,6 +7,5 @@ import java.util.Optional;
 
 public interface UserCommandService {
 
-
-    Optional<Users> handle(CreateUserCommand command);
+    Long handle(CreateUserCommand command);
 }

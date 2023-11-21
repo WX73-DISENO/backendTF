@@ -23,7 +23,7 @@ public class KeeperRequest extends AuditableModel {
     @Getter
     private String photoUrl;
     @Getter
-    private double rating;
+    private float rating;
 
     @CreatedDate
     private Date createdAt;

@@ -8,6 +8,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
+
+@Getter
 public class Viaje {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +28,12 @@ public class Viaje {
 
     @LastModifiedDate
     private Date updatedAt;
+
+    public Viaje(String nombre, String description, String photoFace) {
+        this.nombre = nombre;
+        this.description = description;
+        this.photoFace = photoFace;
+    }
+
+    public Viaje(){}
 }

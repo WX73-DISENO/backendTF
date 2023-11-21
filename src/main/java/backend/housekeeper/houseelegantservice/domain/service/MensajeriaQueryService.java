@@ -4,8 +4,10 @@ import backend.housekeeper.houseelegantservice.domain.model.aggregates.Mensajeri
 import org.springframework.stereotype.Service;
 //import backend.housekeeper.houseelegantservice.domain.model.queries.GetMensajeriaByidQuery;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface MensajeriaQueryService {
-    //Optional<Mensajeria> handle(GetMensajeriaByidQuery query);
+    Mensajeria getMensajeriaById(Long mensajeriaId);
+    List<Mensajeria> getAllMensajes();
 }

@@ -1,4 +1,5 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,7 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.util.Date;
 @Getter
 @Entity
-public class Mensajeria {
+public class MensajeriaTraveller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,13 +30,13 @@ public class Mensajeria {
     @JsonIgnore
     private Date updatedAt;
 
-    public Mensajeria(String nombre, String description, String photoFace) {
+    public MensajeriaTraveller(String nombre, String description, String photoFace) {
         this.nombre = nombre;
         this.description = description;
         this.photoFace = photoFace;
     }
 
-    public Mensajeria() {
+    public MensajeriaTraveller() {
         // Constructor vacío
     }
 }

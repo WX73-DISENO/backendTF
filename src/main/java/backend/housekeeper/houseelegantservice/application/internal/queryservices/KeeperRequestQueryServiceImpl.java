@@ -5,7 +5,6 @@ import backend.housekeeper.houseelegantservice.domain.model.query.GetAllKeeperRe
 import backend.housekeeper.houseelegantservice.domain.model.query.GetKeeperRequestByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.KeeperRequestQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.KeeperRequestRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +15,6 @@ public class KeeperRequestQueryServiceImpl implements KeeperRequestQueryService 
 
     private final KeeperRequestRepository keeperRequestRepository;
 
-    @Autowired
     public KeeperRequestQueryServiceImpl(KeeperRequestRepository keeperRequestRepository) {
         this.keeperRequestRepository = keeperRequestRepository;
     }

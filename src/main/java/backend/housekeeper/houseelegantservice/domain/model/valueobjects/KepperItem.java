@@ -2,7 +2,6 @@ package backend.housekeeper.houseelegantservice.domain.model.valueobjects;
 
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.KeeperRequest;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +18,16 @@ public class KepperItem{
     public KepperItem(){this.keeperRequests=new ArrayList<>();}
 
 
-    public void addKeeperRequest(String firstName,String lastName,String message,String photoUrl){
+    public void addKeeperRequest(String name, String message,String photoUrl, Float rating){
 
-        KeeperRequest KeeperRequest=new KeeperRequest(firstName,lastName,message,photoUrl);
+        KeeperRequest KeeperRequest=new KeeperRequest(name, message,photoUrl, rating);
         keeperRequests.add(KeeperRequest);
 
     }
 
-    public void updateKeeperRequest(int id, String firstName,String lastName, String message, String photoUrl) {
+    public void updateKeeperRequest(int id, String name, String message, String photoUrl, Float rating) {
         if (id >= 0 && id < keeperRequests.size()) {
-            KeeperRequest keeperRequest = new KeeperRequest(firstName,lastName, message, photoUrl);
+            KeeperRequest keeperRequest = new KeeperRequest(name, message, photoUrl, rating);
             keeperRequests.set(id, keeperRequest);
         } else {
             throw new IndexOutOfBoundsException("Index " + id + " is out of bounds for keeperRequests");

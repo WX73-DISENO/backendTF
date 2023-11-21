@@ -1,9 +1,7 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
-import backend.housekeeper.houseelegantservice.domain.model.valueobjects.KeeperName;
 import backend.housekeeper.shared.domain.model.entities.AuditableModel;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -19,7 +17,7 @@ public class KeeperRequest extends AuditableModel {
 
     @Getter
     @Embedded
-    private KeeperName name;
+    private String name;
     @Getter
     private String message;
     @Getter
@@ -36,10 +34,11 @@ public class KeeperRequest extends AuditableModel {
 
 
 
-    public KeeperRequest(String firstName,String lastName, String message, String photoUrl){
-        this.name =  new KeeperName(firstName,lastName);
+    public KeeperRequest(String name, String message, String photoUrl, Float rating){
+        this.name =  name;
         this.message = message;
         this.photoUrl = photoUrl;
+        this.rating = rating;
     }
 
     public KeeperRequest() {

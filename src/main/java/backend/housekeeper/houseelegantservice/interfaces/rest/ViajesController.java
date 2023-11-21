@@ -1,7 +1,7 @@
 package backend.housekeeper.houseelegantservice.interfaces.rest;
 
-import backend.housekeeper.houseelegantservice.domain.model.queries.GetViajeAllQuery;
-import backend.housekeeper.houseelegantservice.domain.model.queries.GetViajeByIdQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetViajeAllQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetViajeByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.ViajeCommandService;
 import backend.housekeeper.houseelegantservice.domain.service.ViajeQueryService;
 import backend.housekeeper.houseelegantservice.interfaces.rest.resources.CreateViajeResource;

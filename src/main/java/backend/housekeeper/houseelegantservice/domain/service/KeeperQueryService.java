@@ -1,10 +1,9 @@
 package backend.housekeeper.houseelegantservice.domain.service;
 
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.Keeper;
-
-import java.util.Optional;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetKeeperAllQuery;
+import java.util.List;
 
 public interface KeeperQueryService {
-
-        Optional<Keeper> handle(GetKeeperAllQuery query);
+    List<Keeper> handle(GetKeeperAllQuery query);
 }

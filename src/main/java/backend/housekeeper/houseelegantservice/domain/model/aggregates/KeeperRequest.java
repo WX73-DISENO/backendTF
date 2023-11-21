@@ -1,30 +1,30 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
+import backend.housekeeper.houseelegantservice.domain.model.valueobjects.KeeperName;
+import backend.housekeeper.shared.domain.model.entities.AuditableModel;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
 
-@Getter
-@Entity
-public class KeeperRequest {
 
+@Entity
+public class KeeperRequest extends AuditableModel {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "message")
+    @Getter
+    @Embedded
+    private KeeperName name;
+    @Getter
     private String message;
-
-    @Column(name = "photoUrl")
+    @Getter
     private String photoUrl;
-
-    @Column(name = "rating")
+    @Getter
     private Float rating;
 
     @CreatedDate
@@ -33,16 +33,16 @@ public class KeeperRequest {
     @LastModifiedDate
     private Date updatedAt;
 
+
+
+
+    public KeeperRequest(String firstName,String lastName, String message, String photoUrl){
+        this.name =  new KeeperName(firstName,lastName);
+        this.message = message;
+        this.photoUrl = photoUrl;
+    }
+
     public KeeperRequest() {
 
     }
-
-    public KeeperRequest(String name, String message, String photoUrl, Float rating){
-        this.name =  name;
-        this.message = message;
-        this.photoUrl = photoUrl;
-        this.rating = rating;
-    }
-
-
 }

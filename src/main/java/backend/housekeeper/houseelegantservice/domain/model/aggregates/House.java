@@ -12,6 +12,7 @@ import java.util.Date;
 
 @Getter
 @Setter
+@Entity
 public class House {
     @Getter
     @Id
@@ -27,16 +28,16 @@ public class House {
     private StreetAddress address;
 
     @Column(name = "price")
-    private double price;
+    private Float price;
 
     @Column(name = "rating")
-    private double rating;
+    private Float rating;
 
     @Column(name = "photo_url")
     private String photoUrl;
 
     @Column(name = "capacity")
-    private int capacity;
+    private Integer capacity;
 
     @Column(name = "status")
     private HouseStatus status;
@@ -46,9 +47,16 @@ public class House {
     @LastModifiedDate
     private Date updatedAt;
 
-    public House(String street, String city, String country) {
-        this.status = HouseStatus.FREE;
+    public House(String street, String city, String country, Float price, String photoUrl, Integer capacity, Float rating) {
         this.address = new StreetAddress(street, city, country);
+        this.price = price;
+        this.rating = rating;
+        this.photoUrl = photoUrl;
+        this.capacity = capacity;
+        this.status = HouseStatus.FREE;
+    }
+
+    public House() {
 
     }
 

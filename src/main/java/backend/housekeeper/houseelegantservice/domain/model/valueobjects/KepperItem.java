@@ -19,16 +19,16 @@ public class KepperItem{
     public KepperItem(){this.keeperRequests=new ArrayList<>();}
 
 
-    public void addKeeperRequest(String name,String message,String photoUrl){
+    public void addKeeperRequest(String firstName,String lastName,String message,String photoUrl){
 
-        KeeperRequest KeeperRequest=new KeeperRequest(name,message,photoUrl);
+        KeeperRequest KeeperRequest=new KeeperRequest(firstName,lastName,message,photoUrl);
         keeperRequests.add(KeeperRequest);
 
     }
 
-    public void updateKeeperRequest(int id, String name, String message, String photoUrl) {
+    public void updateKeeperRequest(int id, String firstName,String lastName, String message, String photoUrl) {
         if (id >= 0 && id < keeperRequests.size()) {
-            KeeperRequest keeperRequest = new KeeperRequest(name, message, photoUrl);
+            KeeperRequest keeperRequest = new KeeperRequest(firstName,lastName, message, photoUrl);
             keeperRequests.set(id, keeperRequest);
         } else {
             throw new IndexOutOfBoundsException("Index " + id + " is out of bounds for keeperRequests");

@@ -4,7 +4,6 @@ import backend.housekeeper.houseelegantservice.application.internal.commandservi
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.Viaje;
 import backend.housekeeper.houseelegantservice.domain.service.ViajeQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.ViajeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class ViajeQueryServiceImpl implements ViajeQueryService {
 
     private final ViajeRepository viajeRepository;
 
-    @Autowired
     public ViajeQueryServiceImpl(ViajeRepository viajeRepository) {
         this.viajeRepository = viajeRepository;
     }
@@ -29,6 +27,4 @@ public class ViajeQueryServiceImpl implements ViajeQueryService {
     public List<Viaje> getAllViajes() {
         return viajeRepository.findAll();
     }
-
-
 }

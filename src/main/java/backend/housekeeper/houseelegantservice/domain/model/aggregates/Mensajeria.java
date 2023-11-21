@@ -5,7 +5,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
-@Getter
 @Entity
 public class Mensajeria {
     @Id
@@ -20,4 +19,9 @@ public class Mensajeria {
     @Column(name = "photo_face")
     private String photoFace;
 
+    @CreatedDate
+    private Date createdAt;
+
+    @LastModifiedDate
+    private Date updatedAt;
 }

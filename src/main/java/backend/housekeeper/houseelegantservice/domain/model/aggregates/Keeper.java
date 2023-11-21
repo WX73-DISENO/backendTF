@@ -40,7 +40,7 @@ public class Keeper {
     private String photoUrl;
 
     @Column(name = "rating")
-    private double rating;
+    private Float rating;
 
     @CreatedDate
     private Date createdAt;

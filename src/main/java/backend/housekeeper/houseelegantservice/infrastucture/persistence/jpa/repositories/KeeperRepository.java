@@ -3,5 +3,5 @@ package backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.re
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HouseRepository {
+public interface KeeperRepository {
 }

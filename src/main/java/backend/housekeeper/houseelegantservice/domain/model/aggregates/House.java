@@ -27,16 +27,16 @@ public class House {
     private StreetAddress address;
 
     @Column(name = "price")
-    private double price;
+    private Float price;
 
     @Column(name = "rating")
-    private double rating;
+    private Float rating;
 
     @Column(name = "photo_url")
     private String photoUrl;
 
     @Column(name = "capacity")
-    private int capacity;
+    private Integer capacity;
 
     @Column(name = "status")
     private HouseStatus status;

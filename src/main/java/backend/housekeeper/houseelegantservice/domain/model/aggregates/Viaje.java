@@ -1,41 +1,39 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
+
 @Entity
+@Getter
 public class Viaje {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Getter
     private String title;
 
-    @Getter
-    @Column(name = "description")
+    @Column(name = "description") // Puedes personalizar el nombre de la columna si es necesario
     private String description;
 
-    @Getter
-    @Column(name = "photoUrl")
+    @Column(name = "photo_face") // Puedes personalizar el nombre de la columna si es necesario
     private String photoUrl;
 
-    @Getter
     @Column(name = "rating")
     private float rating;
 
     @CreatedDate
+    @JsonIgnore
     private Date createdAt;
 
     @LastModifiedDate
+    @JsonIgnore
     private Date updatedAt;
 
-    public Viaje() {
-
-    }
     public Viaje(String title, String description, String photoUrl, float rating) {
         this.title = title;
         this.description = description;
@@ -43,12 +41,5 @@ public class Viaje {
         this.rating = rating;
     }
 
-    public void update(String title, String description, String photoUrl, float rating) {
-        this.title = title;
-        this.description = description;
-        this.photoUrl = photoUrl;
-        this.rating = rating;
-
-        this.updatedAt = new Date();
-    }
+    public Viaje(){}
 }

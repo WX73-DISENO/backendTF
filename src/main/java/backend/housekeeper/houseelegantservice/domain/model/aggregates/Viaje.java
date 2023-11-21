@@ -11,6 +11,7 @@ import java.util.Date;
 
 @Getter
 public class Viaje {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

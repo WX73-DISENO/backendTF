@@ -41,7 +41,7 @@ public class KeeperRequest extends AuditableModel {
 
     }
 
-    public KeeperRequest(String name, String message, String photoUrl, float rating){
+    public KeeperRequest(String name, String message, String photoUrl, Float rating){
         this.name =  name;
         this.message = message;
         this.photoUrl = photoUrl;

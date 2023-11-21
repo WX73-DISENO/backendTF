@@ -4,25 +4,21 @@ import backend.housekeeper.houseelegantservice.domain.model.aggregates.Mensajeri
 import backend.housekeeper.houseelegantservice.domain.model.command.CreateMensajeriaCommand;
 import backend.housekeeper.houseelegantservice.domain.service.MensajeriaCommandService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.MensajeriaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MensajeriaCommandServiceImpl implements MensajeriaCommandService {
     private final MensajeriaRepository mensajeriaRepository;
 
-    @Autowired
     public MensajeriaCommandServiceImpl(MensajeriaRepository mensajeriaRepository) {
         this.mensajeriaRepository = mensajeriaRepository;
     }
 
+
     @Override
-    public Mensajeria createMensajeria(CreateMensajeriaCommand command) {
-        Mensajeria mensajeria = new Mensajeria(command.nombre(), command.description(), command.photoFace());
-        Mensajeria savedMensajeria = mensajeriaRepository.save(mensajeria);
-        return savedMensajeria;
+    public Long handle(CreateMensajeriaCommand command) {
+        var mensajeria = new Mensajeria(command.nombre(), command.description(), command.photoFace());
+        mensajeriaRepository.save(mensajeria);
+        return mensajeria.getId();
     }
-
-
-
 }

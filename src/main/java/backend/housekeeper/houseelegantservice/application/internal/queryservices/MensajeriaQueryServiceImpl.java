@@ -1,31 +1,32 @@
 package backend.housekeeper.houseelegantservice.application.internal.queryservices;
 
-import backend.housekeeper.houseelegantservice.application.internal.commandservices.MensajeriaNotFoundException;
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.Mensajeria;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetAllMensajesQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetMensajeriaByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.MensajeriaQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.MensajeriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class MensajeriaQueryServiceImpl implements MensajeriaQueryService {
 
     private final MensajeriaRepository mensajeriaRepository;
 
-    @Autowired
     public MensajeriaQueryServiceImpl(MensajeriaRepository mensajeriaRepository) {
         this.mensajeriaRepository = mensajeriaRepository;
     }
 
     @Override
-    public Mensajeria getMensajeriaById(Long mensajeriaId) {
-        return mensajeriaRepository.findById(mensajeriaId)
-                .orElseThrow(() -> new MensajeriaNotFoundException("Mensajeria not found"));
+    public Optional<Mensajeria> handle(GetMensajeriaByIdQuery query) {
+        return mensajeriaRepository.findById(query.mensajeriaId());
     }
 
     @Override
-    public List<Mensajeria> getAllMensajes() {
+    public List<Mensajeria> handle(GetAllMensajesQuery query) {
         return mensajeriaRepository.findAll();
     }
 }

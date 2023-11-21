@@ -4,6 +4,6 @@ import backend.housekeeper.houseelegantservice.domain.model.aggregates.KeeperReq
 import backend.housekeeper.houseelegantservice.domain.model.command.CreateKeeperRequestCommand;
 
 public interface KeeperRequestCommandService {
-    KeeperRequest createKeeperRequest(CreateKeeperRequestCommand command);
+    Long handle(CreateKeeperRequestCommand command);
 
 }

@@ -1,6 +1,7 @@
 package backend.housekeeper.houseelegantservice.interfaces.rest;
 
-import backend.housekeeper.houseelegantservice.domain.model.aggregates.KeeperRequest;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetAllKeeperRequestsQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetKeeperRequestByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.KeeperRequestCommandService;
 import backend.housekeeper.houseelegantservice.domain.service.KeeperRequestQueryService;
 import backend.housekeeper.houseelegantservice.interfaces.rest.resources.CreateKeeperRequestResource;
@@ -43,22 +44,24 @@ public class KeeperRequestsController {
     public ResponseEntity<KeeperRequestResource> createKeeperRequest(CreateKeeperRequestResource resource) {
 
         var createKeeperRequestCommand = CreateKeeperRequestCommandFromResourceAssembler.toCommandFromResource(resource);
-        var requestId = keeperRequestCommandService.createKeeperRequest(createKeeperRequestCommand);
-
+        var requestId = keeperRequestCommandService.handle(createKeeperRequestCommand);
         if (requestId == null) {
             return ResponseEntity.badRequest().build();
         }
-
-        var keeperRequest = keeperRequestQueryService.getKeeperRequestById(requestId.getId());
-        if (keeperRequest == null) {
+        var getKeeperRequestByIdQuery = new GetKeeperRequestByIdQuery(requestId);
+        var keeperRequest = keeperRequestQueryService.handle(getKeeperRequestByIdQuery);
+        if (keeperRequest.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
 
-        var keeperRequestResource = KeeperRequestResourceFromEntityAssembler.toResourceFromEntity(keeperRequest);
+        var keeperRequestResource = KeeperRequestResourceFromEntityAssembler.toResourceFromEntity(keeperRequest.get());
         return new ResponseEntity<>(keeperRequestResource, HttpStatus.CREATED);
     }
     @GetMapping
-    public List<KeeperRequest> getAllKeeperRequests() {
-        return keeperRequestQueryService.getAllKeeperRequests();
+    public ResponseEntity<List<KeeperRequestResource>> getAllKeeperRequests() {
+        var getAllKeeperRequestQuery = new GetAllKeeperRequestsQuery();
+        var keeperRequests = keeperRequestQueryService.handle(getAllKeeperRequestQuery);
+        var keeperRequestResourcesces = keeperRequests.stream().map(KeeperRequestResourceFromEntityAssembler::toResourceFromEntity).toList();
+        return ResponseEntity.ok(keeperRequestResourcesces);
     }
 }

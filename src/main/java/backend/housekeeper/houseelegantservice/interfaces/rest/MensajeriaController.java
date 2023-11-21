@@ -1,6 +1,7 @@
 package backend.housekeeper.houseelegantservice.interfaces.rest;
 
-import backend.housekeeper.houseelegantservice.domain.model.aggregates.Mensajeria;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetAllMensajesQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetMensajeriaByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.MensajeriaCommandService;
 import backend.housekeeper.houseelegantservice.domain.service.MensajeriaQueryService;
 import backend.housekeeper.houseelegantservice.interfaces.rest.resources.CreateMensajeriaResource;
@@ -43,22 +44,25 @@ public class MensajeriaController {
     public ResponseEntity<MensajeriaResource> createMensajeria(CreateMensajeriaResource resource) {
 
         var createMensajeriaCommand = CreateMensajeriaCommandFromResourceAssembler.toCommandFromResource(resource);
-        var mensajeriaId = mensajeriaCommandService.createMensajeria(createMensajeriaCommand);
+        var mensajeriaId = mensajeriaCommandService.handle(createMensajeriaCommand);
 
         if (mensajeriaId == null) {
             return ResponseEntity.badRequest().build();
         }
-
-        var mensajeria = mensajeriaQueryService.getMensajeriaById(mensajeriaId.getId());
-        if (mensajeria == null) {
+        var getMensajeriaByIdQuery = new GetMensajeriaByIdQuery(mensajeriaId);
+        var mensajeria = mensajeriaQueryService.handle(getMensajeriaByIdQuery);
+        if (mensajeria.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
 
-        var mensajeriaResource = MensajeriaResourceFromEntityAssembler.toResourceFromEntity(mensajeria);
+        var mensajeriaResource = MensajeriaResourceFromEntityAssembler.toResourceFromEntity(mensajeria.get());
         return new ResponseEntity<>(mensajeriaResource, HttpStatus.CREATED);
     }
     @GetMapping
-    public List<Mensajeria> getAllMensajes() {
-        return mensajeriaQueryService.getAllMensajes();
+    public ResponseEntity<List<MensajeriaResource>> getAllMensajes() {
+        var getAllMensajes = new GetAllMensajesQuery();
+        var mensajes = mensajeriaQueryService.handle(getAllMensajes);
+        var mensajeResources = mensajes.stream().map(MensajeriaResourceFromEntityAssembler::toResourceFromEntity).toList();
+        return ResponseEntity.ok(mensajeResources);
     }
 }

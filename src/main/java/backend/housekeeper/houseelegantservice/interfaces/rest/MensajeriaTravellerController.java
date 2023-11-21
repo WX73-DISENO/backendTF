@@ -1,6 +1,7 @@
 package backend.housekeeper.houseelegantservice.interfaces.rest;
 
-import backend.housekeeper.houseelegantservice.domain.model.aggregates.MensajeriaTraveller;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetAllMensajesQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetMensajeriaTravellerByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.MensajeriaTravellerCommandService;
 import backend.housekeeper.houseelegantservice.domain.service.MensajeriaTravellerQueryService;
 import backend.housekeeper.houseelegantservice.interfaces.rest.resources.CreateMensajeriaResource;
@@ -44,22 +45,25 @@ public class MensajeriaTravellerController {
     public ResponseEntity<MensajeriaTravellerResource> createMensajeria(CreateMensajeriaTravellerResource resource) {
 
         var createMensajeriaCommand = CreateMensajeriaTravellerCommandFromResourceAssembler.toCommandFromResource(resource);
-        var mensajeriaId = mensajeriaTravellerCommandService.createMensajeriaTraveller(createMensajeriaCommand);
+        var mensajeriaId = mensajeriaTravellerCommandService.handle(createMensajeriaCommand);
 
         if (mensajeriaId == null) {
             return ResponseEntity.badRequest().build();
         }
-
-        var mensajeria = mensajeriaTravellerQueryService.getMensajeriaTravellerById(mensajeriaId.getId());
-        if (mensajeria == null) {
+        var getMensajeriaTravellerById = new GetMensajeriaTravellerByIdQuery(mensajeriaId);
+        var mensajeria = mensajeriaTravellerQueryService.handle(getMensajeriaTravellerById);
+        if (mensajeria.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
 
-        var mensajeriaResource = MensajeriaTravellerResourceFromEntityAssembler.toResourceFromEntity(mensajeria);
+        var mensajeriaResource = MensajeriaTravellerResourceFromEntityAssembler.toResourceFromEntity(mensajeria.get());
         return new ResponseEntity<>(mensajeriaResource, HttpStatus.CREATED);
     }
     @GetMapping
-    public List<MensajeriaTraveller> getAllMensajes() {
-        return mensajeriaTravellerQueryService.getAllMensajes();
+    public ResponseEntity<List<MensajeriaTravellerResource>> getAllMensajes() {
+        var getAllMensajesQuery = new GetAllMensajesQuery();
+        var mensajes = mensajeriaTravellerQueryService.handle(getAllMensajesQuery);
+        var mensajesResources = mensajes.stream().map(MensajeriaTravellerResourceFromEntityAssembler::toResourceFromEntity).toList();
+        return ResponseEntity.ok(mensajesResources);
     }
 }

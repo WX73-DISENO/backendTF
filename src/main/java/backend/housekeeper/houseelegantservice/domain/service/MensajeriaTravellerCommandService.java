@@ -9,6 +9,6 @@ import backend.housekeeper.houseelegantservice.domain.model.aggregates.Mensajeri
 import backend.housekeeper.houseelegantservice.domain.model.command.CreateMensajeriaTravellerCommand;
 
 public interface MensajeriaTravellerCommandService {
-    MensajeriaTraveller createMensajeriaTraveller(CreateMensajeriaTravellerCommand command);
+    Long handle(CreateMensajeriaTravellerCommand command);
 
 }

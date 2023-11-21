@@ -1,16 +1,15 @@
 package backend.housekeeper.houseelegantservice.application.internal.queryservices;
 
-import backend.housekeeper.houseelegantservice.application.internal.commandservices.MensajeriaNotFoundException;
-import backend.housekeeper.houseelegantservice.application.internal.commandservices.MensajeriaTravellerNotFoundException;
-import backend.housekeeper.houseelegantservice.domain.model.aggregates.Mensajeria;
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.MensajeriaTraveller;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetAllMensajesQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetMensajeriaTravellerByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.MensajeriaTravellerQueryService;
-import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.MensajeriaRepository;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.MensajeriaTravellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MensajeriaTravellerQueryServiceImpl implements MensajeriaTravellerQueryService {
@@ -22,13 +21,12 @@ public class MensajeriaTravellerQueryServiceImpl implements MensajeriaTravellerQ
     }
 
     @Override
-    public MensajeriaTraveller getMensajeriaTravellerById(Long mensajeriaTravelleId) {
-        return mensajeriaTravellerRepository.findById(mensajeriaTravelleId)
-                .orElseThrow(() -> new MensajeriaTravellerNotFoundException("Mensajeria not found"));
+    public Optional<MensajeriaTraveller> handle(GetMensajeriaTravellerByIdQuery query) {
+        return mensajeriaTravellerRepository.findById(query.mensajeriaTravellerId());
     }
 
     @Override
-    public List<MensajeriaTraveller> getAllMensajes() {
+    public List<MensajeriaTraveller> handle(GetAllMensajesQuery query) {
         return mensajeriaTravellerRepository.findAll();
     }
 }

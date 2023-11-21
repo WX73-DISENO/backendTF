@@ -6,6 +6,6 @@ import backend.housekeeper.houseelegantservice.domain.model.command.CreateMensaj
 import org.springframework.stereotype.Service;
 
 public interface MensajeriaCommandService {
-    Mensajeria createMensajeria(CreateMensajeriaCommand command);
+    Long handle(CreateMensajeriaCommand command);
 
 }

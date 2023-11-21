@@ -2,8 +2,8 @@ package backend.housekeeper.houseelegantservice.application.internal.queryservic
 
 
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.Viaje;
-import backend.housekeeper.houseelegantservice.domain.model.queries.GetViajeAllQuery;
-import backend.housekeeper.houseelegantservice.domain.model.queries.GetViajeByIdQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetViajeAllQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetViajeByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.ViajeQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.ViajeRepository;
 import org.springframework.stereotype.Service;

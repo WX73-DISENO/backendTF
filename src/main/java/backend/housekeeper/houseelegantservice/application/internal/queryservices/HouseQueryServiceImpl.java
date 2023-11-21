@@ -2,7 +2,7 @@ package backend.housekeeper.houseelegantservice.application.internal.queryservic
 
 
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.House;
-import backend.housekeeper.houseelegantservice.domain.model.queries.GetHouseAllQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetHouseAllQuery;
 import backend.housekeeper.houseelegantservice.domain.service.HouseQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.HouseRepository;
 import org.springframework.stereotype.Service;

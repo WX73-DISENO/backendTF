@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 
 public interface MensajeriaCommandService {
     Mensajeria createMensajeria(CreateMensajeriaCommand command);
-    void deleteMensajeria(Long mensajeriaId);
+
 }

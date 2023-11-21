@@ -10,5 +10,5 @@ import backend.housekeeper.houseelegantservice.domain.model.command.CreateMensaj
 
 public interface MensajeriaTravellerCommandService {
     MensajeriaTraveller createMensajeriaTraveller(CreateMensajeriaTravellerCommand command);
-    void deleteMensajeria(Long mensajeriaId);
+
 }

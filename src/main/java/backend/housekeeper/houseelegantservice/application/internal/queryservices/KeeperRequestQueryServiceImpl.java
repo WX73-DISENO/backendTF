@@ -1,5 +1,6 @@
-package backend.housekeeper.houseelegantservice.application.internal.commandservices;
+package backend.housekeeper.houseelegantservice.application.internal.queryservices;
 
+import backend.housekeeper.houseelegantservice.application.internal.commandservices.KeeperRequestNotFoundException;
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.KeeperRequest;
 import backend.housekeeper.houseelegantservice.domain.service.KeeperRequestQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.KeeperRequestRepository;

@@ -5,5 +5,5 @@ import backend.housekeeper.houseelegantservice.domain.model.command.CreateKeeper
 
 public interface KeeperRequestCommandService {
     KeeperRequest createKeeperRequest(CreateKeeperRequestCommand command);
-    void deleteKeeperRequest(Long requestId);
+
 }

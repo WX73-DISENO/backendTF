@@ -2,7 +2,6 @@ package backend.housekeeper.houseelegantservice.application.internal.commandserv
 
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.Viaje;
 import backend.housekeeper.houseelegantservice.domain.model.command.CreateViajeCommand;
-import backend.housekeeper.houseelegantservice.domain.model.command.UpdateViajeCommand;
 import backend.housekeeper.houseelegantservice.domain.service.ViajeCommandService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.ViajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,27 +25,10 @@ public class ViajeCommandServiceImpl implements ViajeCommandService {
     }
 
     @Override
-    public void updateViaje(Long viajeId, UpdateViajeCommand command) {
-
-        Viaje existingViaje = viajeRepository.findById(viajeId)
-                .orElseThrow(() -> new ViajeNotFoundException("Viaje not found"));
-
-        existingViaje.update(command.title(), command.description(), command.photoUrl(), command.rating());
-
-        viajeRepository.save(existingViaje);
-    }
-
-    @Override
     public void deleteViaje(Long viajeId) {
         Viaje existingViaje = viajeRepository.findById(viajeId)
                 .orElseThrow(() -> new ViajeNotFoundException("Viaje not found"));
 
         viajeRepository.delete(existingViaje);
-    }
-
-    @Override
-    public Viaje handle(CreateViajeCommand command) {
-        var viaje = new Viaje(command.title(), command.description(), command.photoUrl(), command.rating());
-        return viajeRepository.save(viaje);
     }
 }

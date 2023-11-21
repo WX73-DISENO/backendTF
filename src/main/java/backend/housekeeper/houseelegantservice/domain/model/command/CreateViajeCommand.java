@@ -1,4 +1,4 @@
 package backend.housekeeper.houseelegantservice.domain.model.command;
 
-public record CreateViajeCommand (String nombre, String description, String photoFace){
+public record CreateViajeCommand (String title, String description, String photoUrl, float rating){
 }

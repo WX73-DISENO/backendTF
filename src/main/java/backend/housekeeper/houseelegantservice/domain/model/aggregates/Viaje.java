@@ -1,14 +1,13 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
 
+@Entity
 @Getter
 public class Viaje {
     @Getter
@@ -16,24 +15,30 @@ public class Viaje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;
+    private String title;
 
     @Column(name = "description") // Puedes personalizar el nombre de la columna si es necesario
     private String description;
 
     @Column(name = "photo_face") // Puedes personalizar el nombre de la columna si es necesario
-    private String photoFace;
+    private String photoUrl;
+
+    @Column(name = "rating")
+    private float rating;
 
     @CreatedDate
+    @JsonIgnore
     private Date createdAt;
 
     @LastModifiedDate
+    @JsonIgnore
     private Date updatedAt;
 
-    public Viaje(String nombre, String description, String photoFace) {
-        this.nombre = nombre;
+    public Viaje(String title, String description, String photoUrl, float rating) {
+        this.title = title;
         this.description = description;
-        this.photoFace = photoFace;
+        this.photoUrl = photoUrl;
+        this.rating = rating;
     }
 
     public Viaje(){}

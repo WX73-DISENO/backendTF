@@ -1,18 +1,13 @@
 package backend.housekeeper.houseelegantservice.interfaces.rest;
 
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.Viaje;
-import backend.housekeeper.houseelegantservice.domain.model.command.CreateViajeCommand;
-import backend.housekeeper.houseelegantservice.domain.model.command.UpdateViajeCommand;
 import backend.housekeeper.houseelegantservice.domain.service.ViajeCommandService;
 import backend.housekeeper.houseelegantservice.domain.service.ViajeQueryService;
 import backend.housekeeper.houseelegantservice.interfaces.rest.resources.CreateViajeResource;
 import backend.housekeeper.houseelegantservice.interfaces.rest.resources.ViajeResource;
 import backend.housekeeper.houseelegantservice.interfaces.rest.transform.CreateViajeCommandFromResourceAssembler;
 import backend.housekeeper.houseelegantservice.interfaces.rest.transform.ViajeResourceFromEntityAssembler;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

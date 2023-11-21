@@ -9,8 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface MensajeriaTravellerRepository extends JpaRepository<MensajeriaTraveller, Long> {
-    MensajeriaTraveller save(MensajeriaTraveller mensajeria);
-    Optional<MensajeriaTraveller> findById(Long id);
-    List<MensajeriaTraveller> findAll();
-    void delete(MensajeriaTraveller mensajeria);
+
 }

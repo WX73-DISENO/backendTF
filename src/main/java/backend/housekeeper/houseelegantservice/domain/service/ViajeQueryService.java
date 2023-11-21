@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ViajeQueryService {
-    List<Viaje> handle(GetViajeAllQuery query);
     Optional<Viaje> handle(GetViajeByIdQuery query);
+    List<Viaje> handle(GetViajeAllQuery query);
 }

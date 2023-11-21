@@ -1,6 +1,5 @@
 package backend.housekeeper.houseelegantservice.application.internal.commandservices;
 
-
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.Viaje;
 import backend.housekeeper.houseelegantservice.domain.model.command.CreateViajeCommand;
 import backend.housekeeper.houseelegantservice.domain.service.ViajeCommandService;
@@ -17,7 +16,7 @@ public class ViajeCommandServiceImpl implements ViajeCommandService {
 
     @Override
     public Long handle(CreateViajeCommand command) {
-        viajeRepository.findViajeByTitle(command.title()).map(viaje -> {
+        viajeRepository.findByTitle(command.title()).map(viaje -> {
             throw new IllegalArgumentException("Viaje with title " + command.title() + " already exists");
         });
         var viaje = new Viaje(command.title(), command.description(), command.photoUrl(), command.rating());

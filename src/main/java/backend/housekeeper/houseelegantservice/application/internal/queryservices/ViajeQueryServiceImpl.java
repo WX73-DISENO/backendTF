@@ -1,6 +1,5 @@
 package backend.housekeeper.houseelegantservice.application.internal.queryservices;
 
-
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.Viaje;
 import backend.housekeeper.houseelegantservice.domain.model.query.GetViajeAllQuery;
 import backend.housekeeper.houseelegantservice.domain.model.query.GetViajeByIdQuery;
@@ -20,14 +19,12 @@ public class ViajeQueryServiceImpl implements ViajeQueryService {
     }
 
     @Override
-    public List<Viaje> handle(GetViajeAllQuery query) {
-        return viajeRepository.findAll();
-    }
-
-    @Override
     public Optional<Viaje> handle(GetViajeByIdQuery query) {
         return viajeRepository.findById(query.viajeId());
     }
 
-
+    @Override
+    public List<Viaje> handle(GetViajeAllQuery query) {
+        return viajeRepository.findAll();
+    }
 }

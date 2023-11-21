@@ -43,4 +43,3 @@ public class Viaje {
 
     public Viaje(){}
 }
-

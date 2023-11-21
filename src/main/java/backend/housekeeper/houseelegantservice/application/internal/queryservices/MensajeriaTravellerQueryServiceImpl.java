@@ -15,7 +15,6 @@ import java.util.Optional;
 public class MensajeriaTravellerQueryServiceImpl implements MensajeriaTravellerQueryService {
     private final MensajeriaTravellerRepository mensajeriaTravellerRepository;
 
-    @Autowired
     public MensajeriaTravellerQueryServiceImpl(MensajeriaTravellerRepository mensajeriaTravellerRepository) {
         this.mensajeriaTravellerRepository = mensajeriaTravellerRepository;
     }

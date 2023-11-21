@@ -21,7 +21,6 @@ public class ViajeCommandServiceImpl implements ViajeCommandService {
     public Viaje createViaje(CreateViajeCommand command) {
         Viaje viaje = new Viaje(command.title(), command.description(), command.photoUrl(), command.rating());
         Viaje savedViaje = viajeRepository.save(viaje);
-
         return savedViaje;
     }
 
@@ -44,9 +43,5 @@ public class ViajeCommandServiceImpl implements ViajeCommandService {
         viajeRepository.delete(existingViaje);
     }
 
-    @Override
-    public Viaje handle(CreateViajeCommand command) {
-        var viaje = new Viaje(command.title(), command.description(), command.photoUrl(), command.rating());
-        return viajeRepository.save(viaje);
-    }
+
 }

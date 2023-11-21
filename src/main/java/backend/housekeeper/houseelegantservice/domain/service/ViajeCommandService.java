@@ -8,5 +8,5 @@ public interface ViajeCommandService {
     Viaje createViaje(CreateViajeCommand command);
     void updateViaje(Long viajeId, UpdateViajeCommand command);
     void deleteViaje(Long viajeId);
-    Viaje handle(CreateViajeCommand  command);
+
 }

@@ -17,7 +17,7 @@ public class ViajeCommandServiceImpl implements ViajeCommandService {
 
     @Override
     public Long handle(CreateViajeCommand command) {
-        viajeRepository.getViajeByTitle(command.title()).map(viaje -> {
+        viajeRepository.findViajeByTitle(command.title()).map(viaje -> {
             throw new IllegalArgumentException("Viaje with title " + command.title() + " already exists");
         });
         var viaje = new Viaje(command.title(), command.description(), command.photoUrl(), command.rating());

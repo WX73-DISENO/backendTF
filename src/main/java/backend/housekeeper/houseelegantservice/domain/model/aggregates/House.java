@@ -12,6 +12,7 @@ import java.util.Date;
 
 @Getter
 @Setter
+@Entity
 public class House {
     @Getter
     @Id
@@ -53,6 +54,10 @@ public class House {
         this.photoUrl = photoUrl;
         this.capacity = capacity;
         this.status = HouseStatus.FREE;
+    }
+
+    public House() {
+
     }
 
     public String getStreetAddress() {

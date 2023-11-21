@@ -13,13 +13,13 @@ public class Viaje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;
+    private String title;
 
-    @Column(name = "description") // Puedes personalizar el nombre de la columna si es necesario
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "photo_face") // Puedes personalizar el nombre de la columna si es necesario
-    private String photoFace;
+    @Column(name = "photoUrl")
+    private String photoUrl;
 
     @CreatedDate
     private Date createdAt;

@@ -25,9 +25,17 @@ public class HouseCommandServiceImpl implements HouseCommandService {
                 .orElseThrow(() -> new HouseNotFoundException("House not found"));
 
         // Validar los datos del comando antes de actualizar la casa
+        /*
         existingHouse.setCountry(command.country());
         existingHouse.setCity(command.city());
         existingHouse.setStreetAddress(command.streetAddress());
+        existingHouse.setPrice(command.price());
+        existingHouse.setRating(command.rating());
+        existingHouse.setPhotoUrl(command.photoUrl());
+        existingHouse.setCapacity(command.capacity());
+        */
+
+        existingHouse.setAddress(existingHouse.getAddress()); //no estoy seguro
         existingHouse.setPrice(command.price());
         existingHouse.setRating(command.rating());
         existingHouse.setPhotoUrl(command.photoUrl());
@@ -37,10 +45,16 @@ public class HouseCommandServiceImpl implements HouseCommandService {
     }
     @Override
     public House createHouse(CreateHouseCommand command) {
-        House newHouse = new House();
-        newHouse.setCountry(command.country());
+
+        House newHouse = new House(command.country(), command.city(), command.streetAddress());
+
+        /*
+        setCountry(command.country());
         newHouse.setCity(command.city());
         newHouse.setStreetAddress(command.streetAddress());
+        */
+
+        newHouse.setAddress(newHouse.getAddress()); //no estoy seguro
         newHouse.setPrice(command.price());
         newHouse.setRating(command.rating());
         newHouse.setPhotoUrl(command.photoUrl());

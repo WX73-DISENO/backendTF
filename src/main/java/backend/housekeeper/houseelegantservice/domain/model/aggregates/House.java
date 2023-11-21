@@ -1,29 +1,30 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import backend.housekeeper.houseelegantservice.domain.model.valueobjects.HouseStatus;
+import backend.housekeeper.houseelegantservice.domain.model.valueobjects.StreetAddress;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
 
+@Getter
+@Setter
 public class House {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "country")
-    private String country;
-
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "street_address")
-    private String streetAddress;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "address_street")),
+            @AttributeOverride(name = "city", column = @Column(name = "address_city")),
+            @AttributeOverride(name = "country", column = @Column(name = "address_country"))
+    })
+    private StreetAddress address;
 
     @Column(name = "price")
     private double price;
@@ -36,37 +37,22 @@ public class House {
 
     @Column(name = "capacity")
     private int capacity;
+
+    @Column(name = "status")
+    private HouseStatus status;
+
     @CreatedDate
     private Date createdAt;
     @LastModifiedDate
     private Date updatedAt;
 
-    public void setCountry(String country) {
-        this.country = country;
+    public House(String street, String city, String country) {
+        this.status = HouseStatus.FREE;
+        this.address = new StreetAddress(street, city, country);
+
     }
 
-    // Agrega setters para los demás campos según sea necesario
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public String getStreetAddress() {
+        return this.address.getStreetAddress();
     }
 }

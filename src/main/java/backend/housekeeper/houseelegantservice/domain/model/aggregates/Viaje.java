@@ -7,18 +7,23 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.util.Date;
 @Entity
 public class Viaje {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
     private String title;
 
+    @Getter
     @Column(name = "description")
     private String description;
 
+    @Getter
     @Column(name = "photoUrl")
     private String photoUrl;
 
+    @Getter
     @Column(name = "rating")
     private float rating;
 

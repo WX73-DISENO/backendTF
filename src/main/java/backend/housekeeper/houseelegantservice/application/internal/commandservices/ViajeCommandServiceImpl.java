@@ -20,7 +20,9 @@ public class ViajeCommandServiceImpl implements ViajeCommandService {
     @Override
     public Viaje createViaje(CreateViajeCommand command) {
         Viaje viaje = new Viaje(command.title(), command.description(), command.photoUrl(), command.rating());
-        return viajeRepository.save(viaje);
+        Viaje savedViaje = viajeRepository.save(viaje);
+
+        return savedViaje;
     }
 
     @Override
@@ -40,5 +42,11 @@ public class ViajeCommandServiceImpl implements ViajeCommandService {
                 .orElseThrow(() -> new ViajeNotFoundException("Viaje not found"));
 
         viajeRepository.delete(existingViaje);
+    }
+
+    @Override
+    public Viaje handle(CreateViajeCommand command) {
+        var viaje = new Viaje(command.title(), command.description(), command.photoUrl(), command.rating());
+        return viajeRepository.save(viaje);
     }
 }

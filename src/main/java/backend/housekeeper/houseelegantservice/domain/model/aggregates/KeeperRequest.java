@@ -1,9 +1,6 @@
 package backend.housekeeper.houseelegantservice.domain.model.aggregates;
 import backend.housekeeper.shared.domain.model.entities.AuditableModel;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,7 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.util.Date;
 
 
-
+@Entity
 public class KeeperRequest extends AuditableModel {
     @Getter
     @Id
@@ -41,4 +38,7 @@ public class KeeperRequest extends AuditableModel {
         this.photoUrl = photoUrl;
     }
 
+    public KeeperRequest() {
+
+    }
 }

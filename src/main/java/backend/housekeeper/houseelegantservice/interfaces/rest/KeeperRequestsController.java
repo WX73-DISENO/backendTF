@@ -1,6 +1,6 @@
 package backend.housekeeper.houseelegantservice.interfaces.rest;
 
-import backend.housekeeper.houseelegantservice.domain.model.query.GetAllKeeperRequestsQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetKeeperRequestAllQuery;
 import backend.housekeeper.houseelegantservice.domain.model.query.GetKeeperRequestByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.KeeperRequestCommandService;
 import backend.housekeeper.houseelegantservice.domain.service.KeeperRequestQueryService;
@@ -12,10 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -59,7 +56,7 @@ public class KeeperRequestsController {
     }
     @GetMapping
     public ResponseEntity<List<KeeperRequestResource>> getAllKeeperRequests() {
-        var getAllKeeperRequestQuery = new GetAllKeeperRequestsQuery();
+        var getAllKeeperRequestQuery = new GetKeeperRequestAllQuery();
         var keeperRequests = keeperRequestQueryService.handle(getAllKeeperRequestQuery);
         var keeperRequestResourcesces = keeperRequests.stream().map(KeeperRequestResourceFromEntityAssembler::toResourceFromEntity).toList();
         return ResponseEntity.ok(keeperRequestResourcesces);

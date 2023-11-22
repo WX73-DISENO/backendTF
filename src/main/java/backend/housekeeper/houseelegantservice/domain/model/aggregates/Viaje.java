@@ -7,8 +7,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
 
-@Entity
+
 @Getter
+@Entity
 public class Viaje {
     @Getter
     @Id

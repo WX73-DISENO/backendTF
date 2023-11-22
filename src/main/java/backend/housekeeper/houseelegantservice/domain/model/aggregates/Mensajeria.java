@@ -36,6 +36,5 @@ public class Mensajeria {
     }
 
     public Mensajeria() {
-        // Constructor vacío
     }
 }

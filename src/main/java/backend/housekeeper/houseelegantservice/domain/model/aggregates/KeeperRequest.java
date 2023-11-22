@@ -16,7 +16,6 @@ public class KeeperRequest extends AuditableModel {
     private Long id;
 
     @Getter
-    @Embedded
     private String name;
     @Getter
     private String message;

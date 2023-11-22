@@ -4,7 +4,6 @@ import backend.housekeeper.houseelegantservice.domain.model.query.GetAllMensajes
 import backend.housekeeper.houseelegantservice.domain.model.query.GetMensajeriaTravellerByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.MensajeriaTravellerCommandService;
 import backend.housekeeper.houseelegantservice.domain.service.MensajeriaTravellerQueryService;
-import backend.housekeeper.houseelegantservice.interfaces.rest.resources.CreateMensajeriaResource;
 import backend.housekeeper.houseelegantservice.interfaces.rest.resources.CreateMensajeriaTravellerResource;
 import backend.housekeeper.houseelegantservice.interfaces.rest.resources.MensajeriaTravellerResource;
 import backend.housekeeper.houseelegantservice.interfaces.rest.transform.CreateMensajeriaTravellerCommandFromResourceAssembler;
@@ -13,10 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,7 +34,7 @@ public class MensajeriaTravellerController {
      * <p>Endpoint that creates a mensaje</p>
      * @param resource the resource with the information to create the mensaje
      * @return the created mensaje
-     * @see CreateMensajeriaResource
+     * @see CreateMensajeriaTravellerResource
      * @see MensajeriaTravellerResource
      */
     @PostMapping

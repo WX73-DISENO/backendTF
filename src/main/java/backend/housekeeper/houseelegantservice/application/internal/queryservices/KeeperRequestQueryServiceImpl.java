@@ -1,7 +1,7 @@
 package backend.housekeeper.houseelegantservice.application.internal.queryservices;
 
 import backend.housekeeper.houseelegantservice.domain.model.aggregates.KeeperRequest;
-import backend.housekeeper.houseelegantservice.domain.model.query.GetAllKeeperRequestsQuery;
+import backend.housekeeper.houseelegantservice.domain.model.query.GetKeeperRequestAllQuery;
 import backend.housekeeper.houseelegantservice.domain.model.query.GetKeeperRequestByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.KeeperRequestQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.KeeperRequestRepository;
@@ -25,7 +25,7 @@ public class KeeperRequestQueryServiceImpl implements KeeperRequestQueryService 
     }
 
     @Override
-    public List<KeeperRequest> handle(GetAllKeeperRequestsQuery query) {
+    public List<KeeperRequest> handle(GetKeeperRequestAllQuery query) {
         return keeperRequestRepository.findAll();
     }
 }

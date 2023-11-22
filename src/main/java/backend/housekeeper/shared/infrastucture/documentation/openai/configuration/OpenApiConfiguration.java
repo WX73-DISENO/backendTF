@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OpenApiConfiguration {
     @Bean
-    public OpenAPI learningPlatformOpenApi(){
+    public OpenAPI houseKeeperPlatformOpenApi(){
         return new OpenAPI()
                 .info(new Info().title("House Keeper API")
                         .description(

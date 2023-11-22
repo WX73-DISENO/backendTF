@@ -4,7 +4,9 @@ import backend.housekeeper.houseelegantservice.domain.model.aggregates.House;
 import backend.housekeeper.houseelegantservice.domain.model.command.CreateHouseCommand;
 import backend.housekeeper.houseelegantservice.domain.service.HouseCommandService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.HouseRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class HouseCommandServiceImpl implements HouseCommandService {
     private final HouseRepository houseRepository;
 

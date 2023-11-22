@@ -5,10 +5,12 @@ import backend.housekeeper.houseelegantservice.domain.model.query.GetAllHousesQu
 import backend.housekeeper.houseelegantservice.domain.model.query.GetHouseByIdQuery;
 import backend.housekeeper.houseelegantservice.domain.service.HouseQueryService;
 import backend.housekeeper.houseelegantservice.infrastucture.persistence.jpa.repositories.HouseRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class HouseQueryServiceImpl implements HouseQueryService {
     private final HouseRepository houseRepository;
 

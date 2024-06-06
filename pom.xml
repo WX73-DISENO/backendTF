@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>Backend</groupId>
 	<artifactId>HouseKeeper</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1</version>
 	<name>HouseKeeper</name>
 	<description>HouseKeeper</description>
 	<properties>
@@ -95,7 +95,8 @@
 					</excludes>
 				</configuration>
 			</plugin>
-		</plugins>
+
+        </plugins>
 	</build>
 
 </project>

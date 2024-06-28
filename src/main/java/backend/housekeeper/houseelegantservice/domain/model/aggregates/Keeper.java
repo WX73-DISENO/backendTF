@@ -13,7 +13,8 @@ public class Keeper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Keeper(String name, String country, String city, String streetAddress, String description, String photoUrl, String rating) {
+    public Keeper(String password, String name, String country, String city, String streetAddress, String description, String photoUrl, String rating) {
+        this.password = password;
         this.name = name;
         this.country = country;
         this.city = city;
@@ -22,7 +23,7 @@ public class Keeper {
         this.photoUrl = photoUrl;
         this.rating = rating;
     }
-
+    private String password;
     private String name;
     private String country;
     private String city;

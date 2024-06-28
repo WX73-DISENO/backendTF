@@ -12,7 +12,7 @@ public class PexelsController {
     @Autowired
     private PexelsService pexelsService;
 
-    @GetMapping("/api/photos")
+    @GetMapping("/api/v1/photos")
     public String getPhotos(@RequestParam String query, @RequestParam int perPage) {
         return pexelsService.searchPhotos(query, perPage);
     }

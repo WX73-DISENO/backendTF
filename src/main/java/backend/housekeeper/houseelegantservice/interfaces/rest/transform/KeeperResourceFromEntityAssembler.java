@@ -5,7 +5,16 @@ import backend.housekeeper.houseelegantservice.interfaces.rest.resources.KeeperR
 
 public class KeeperResourceFromEntityAssembler {
     public static KeeperResource toResourceFromEntity(Keeper keeper){
-        return new KeeperResource(keeper.getId(), keeper.getName(), keeper.getCountry(), keeper.getCity(),
-                keeper.getStreetAddress(), keeper.getDescription(), keeper.getPhotoUrl(), keeper.getRating());
+        return new KeeperResource(
+                keeper.getId(),
+                keeper.getPassword(),
+                keeper.getName(),
+                keeper.getCountry(),
+                keeper.getCity(),
+                keeper.getStreetAddress(),
+                keeper.getDescription(),
+                keeper.getPhotoUrl(),
+                keeper.getRating()
+        );
     }
 }

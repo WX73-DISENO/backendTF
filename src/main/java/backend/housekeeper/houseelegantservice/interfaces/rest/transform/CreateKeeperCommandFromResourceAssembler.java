@@ -5,7 +5,15 @@ import backend.housekeeper.houseelegantservice.interfaces.rest.resources.CreateK
 
 public class CreateKeeperCommandFromResourceAssembler {
     public static CreateKeeperCommand toCommandFromResource(CreateKeeperResource resource){
-        return new CreateKeeperCommand(resource.name(), resource.country(), resource.city(),
-                resource.streetAddress(), resource.description(), resource.photoUrl(), resource.rating());
+        return new CreateKeeperCommand(
+                resource.password(),
+                resource.name(),
+                resource.country(),
+                resource.city(),
+                resource.streetAddress(),
+                resource.description(),
+                resource.photoUrl(),
+                resource.rating()
+        );
     }
 }

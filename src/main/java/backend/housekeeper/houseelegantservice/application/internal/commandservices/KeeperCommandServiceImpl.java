@@ -16,8 +16,16 @@ public class KeeperCommandServiceImpl implements KeeperCommandService {
 
     @Override
     public Long handle(CreateKeeperCommand command) {
-        var keeper = new Keeper(command.name(), command.country(), command.city(), command.streetAddress(),
-                command.description(), command.photoUrl(), command.rating());
+        var keeper = new Keeper(
+                command.password(),
+                command.name(),
+                command.country(),
+                command.city(),
+                command.streetAddress(),
+                command.description(),
+                command.photoUrl(),
+                command.rating()
+        );
         keeperRepository.save(keeper);
         return keeper.getId();
     }

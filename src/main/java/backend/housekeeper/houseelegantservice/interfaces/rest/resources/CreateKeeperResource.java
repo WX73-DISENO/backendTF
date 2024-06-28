@@ -7,6 +7,7 @@ public record CreateKeeperResource(
         String city,
         String streetAddress,
         String description,
+        String email,
         String photoUrl,
         String rating
 ) {

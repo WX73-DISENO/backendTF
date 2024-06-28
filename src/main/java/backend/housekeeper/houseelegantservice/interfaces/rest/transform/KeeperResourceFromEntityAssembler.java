@@ -13,6 +13,7 @@ public class KeeperResourceFromEntityAssembler {
                 keeper.getCity(),
                 keeper.getStreetAddress(),
                 keeper.getDescription(),
+                keeper.getEmail(),
                 keeper.getPhotoUrl(),
                 keeper.getRating()
         );

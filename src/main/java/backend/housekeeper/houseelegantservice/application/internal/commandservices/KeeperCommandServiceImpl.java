@@ -23,6 +23,7 @@ public class KeeperCommandServiceImpl implements KeeperCommandService {
                 command.city(),
                 command.streetAddress(),
                 command.description(),
+                command.email(),
                 command.photoUrl(),
                 command.rating()
         );

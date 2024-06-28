@@ -12,6 +12,7 @@ public class CreateKeeperCommandFromResourceAssembler {
                 resource.city(),
                 resource.streetAddress(),
                 resource.description(),
+                resource.email(),
                 resource.photoUrl(),
                 resource.rating()
         );

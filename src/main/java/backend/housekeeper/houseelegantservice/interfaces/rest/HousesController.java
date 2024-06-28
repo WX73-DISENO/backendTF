@@ -29,7 +29,7 @@ public class HousesController {
     }
 
     @PostMapping
-    public ResponseEntity<HouseResource> createHouseResource(CreateHouseResource resource){
+    public ResponseEntity<HouseResource> createHouseResource(@RequestBody CreateHouseResource resource){
         var createHouseCommand = CreateHouseCommandFromResourceAssembler.toCommandFromResource(resource);
         var houseId = houseCommandService.handle(createHouseCommand);
         if(houseId == 0L){
@@ -44,6 +44,7 @@ public class HousesController {
         return new ResponseEntity<>(houseResource, HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping
     public ResponseEntity<List<HouseResource>> getAllHouses(){
         var getAllHousesQuery = new GetAllHousesQuery();

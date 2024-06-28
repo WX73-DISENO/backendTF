@@ -29,6 +29,7 @@ public class KeepersController {
         this.keeperQueryService = keeperQueryService;
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping
     public ResponseEntity<KeeperResource> createKeeperResource(@RequestBody CreateKeeperResource resource){
         var createKeeperCommand = CreateKeeperCommandFromResourceAssembler.toCommandFromResource(resource);
@@ -45,6 +46,7 @@ public class KeepersController {
         return new ResponseEntity<>(keeperResoruce, HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping
     public ResponseEntity<List<KeeperResource>> getAllKeepers(){
         var getAllKeepersQuery = new GetAllKeepersQuery();

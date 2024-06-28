@@ -2,6 +2,7 @@ package backend.housekeeper.houseelegantservice.interfaces.rest;
 
 import backend.housekeeper.houseelegantservice.application.service.PexelsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ public class PexelsController {
     @Autowired
     private PexelsService pexelsService;
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/v1/photos")
     public String getPhotos(@RequestParam String query, @RequestParam int perPage) {
         return pexelsService.searchPhotos(query, perPage);

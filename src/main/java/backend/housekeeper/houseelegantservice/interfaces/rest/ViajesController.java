@@ -37,6 +37,7 @@ public class ViajesController {
      * @see CreateViajeResource
      * @see ViajeResource
      */
+
     @PostMapping
     public ResponseEntity<ViajeResource> createViaje(@RequestBody CreateViajeResource resource) {
 
@@ -54,6 +55,9 @@ public class ViajesController {
         var viajeResource = ViajeResourceFromEntityAssembler.toResourceFromEntity(viaje.get());
         return new ResponseEntity<>(viajeResource, HttpStatus.CREATED);
     }
+
+
+    @CrossOrigin(origins = "*")
     @GetMapping
     public ResponseEntity<List<ViajeResource>> getAllViajes() {
         var getViajesAllQuery = new GetViajeAllQuery();
@@ -63,6 +67,5 @@ public class ViajesController {
         }
         var viajeResources = viajes.stream().map(ViajeResourceFromEntityAssembler::toResourceFromEntity).toList();
         return ResponseEntity.ok(viajeResources);
-
     }
 }

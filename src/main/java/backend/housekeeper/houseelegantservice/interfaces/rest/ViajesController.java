@@ -38,7 +38,7 @@ public class ViajesController {
      * @see ViajeResource
      */
     @PostMapping
-    public ResponseEntity<ViajeResource> createViaje(CreateViajeResource resource) {
+    public ResponseEntity<ViajeResource> createViaje(@RequestBody CreateViajeResource resource) {
 
         var createViajeCommand = CreateViajeCommandFromResourceAssembler.toCommandFromResource(resource);
         var viajeId = viajeCommandService.handle(createViajeCommand);

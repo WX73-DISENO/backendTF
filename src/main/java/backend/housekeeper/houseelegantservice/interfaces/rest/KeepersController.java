@@ -30,7 +30,7 @@ public class KeepersController {
     }
 
     @PostMapping
-    public ResponseEntity<KeeperResource> createKeeperResource(CreateKeeperResource resource){
+    public ResponseEntity<KeeperResource> createKeeperResource(@RequestBody CreateKeeperResource resource){
         var createKeeperCommand = CreateKeeperCommandFromResourceAssembler.toCommandFromResource(resource);
         var keeperId = keeperCommandService.handle(createKeeperCommand);
         if(keeperId == 0L){
